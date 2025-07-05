@@ -38,6 +38,24 @@ button:hover, .btn-primary:hover {
     background-color: #9E3521 !important;
 }
 
+.content {
+    padding-top: 100px; /* Space for fixed header */
+}
+
+/* Main content spacing for datenschutz page - Mobile first */
+body > main.container {
+    padding-top: 30px !important;  /* Smaller padding for mobile */
+    margin-top: 60px !important;   /* Space for fixed header */
+}
+
+/* Adjust padding for larger screens */
+@media (min-width: 768px) {
+    body > main.container {
+        padding-top: 40px !important;
+        margin-top: 80px !important;
+    }
+}
+
 a {
     color: #fff !important;
     text-decoration: none;
