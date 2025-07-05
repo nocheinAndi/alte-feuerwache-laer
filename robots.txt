@@ -1,0 +1,6 @@
+# Basic robots.txt file
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.alte-feuerwache-laer.de/sitemap.xml
