@@ -23,7 +23,88 @@
     <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-    <title>Alte Feuerwache Laer - Kontakt</title>
+    <title>Kontakt - Alte Feuerwache Laer</title>
+    <script type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function(){
+           emailjs.init({
+             publicKey: "MxCAUXjcJTK_9ATal",
+             limitRate: {
+                    throttle: 10000, // 10s
+                    throttleIncrement: 1
+                }
+           });
+        })();
+    </script>
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            // Einfache Validierung
+            const vorname = document.getElementById('vorname').value;
+            const nachname = document.getElementById('nachname').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (!vorname || !nachname || !email || !message) {
+                alert('Bitte füllen Sie alle Felder aus.');
+                return false;
+            }
+            
+            // Sending mail via EmailJS
+            const serviceID = 'service_95df4q9';
+            const templateID = 'template_rby2fkh';
+            const templateParams = {
+                name: vorname + ' ' + nachname,
+                email: email,
+                message: message
+            };
+            const recipient = 'andi.feldmann@gmail.com';
+            const options = {
+                from_name: recipient,
+                reply_to: email
+            };
+            
+            const submitButton = document.getElementById('submit-button');
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Wird gesendet...';
+            
+            emailjs.send(serviceID, templateID, templateParams, options)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    // Show success message
+                    const form = document.getElementById('contactForm');
+                    form.style.display = 'none';
+                    
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'alert alert-success';
+                    successMessage.role = 'alert';
+                    successMessage.innerHTML = `
+                        <p>Dankeschön für Ihre Nachricht! Wir werden uns in Kürze bei Ihnen melden.</p>
+                    `;
+                    
+                    document.querySelector('main').appendChild(successMessage);
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    const statusDiv = document.getElementById('form-status');
+                    statusDiv.innerHTML = `
+                        <div class="alert alert-danger" role="alert">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Es gab ein Problem beim Senden Ihrer Nachricht. Bitte versuchen Sie es später erneut.
+                        </div>
+                    `;
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Erneut versuchen';
+                });
+            
+            // Formular zurücksetzen
+            event.target.reset();
+            
+            return false;
+        }
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -68,9 +149,29 @@
                 </div>
             </div>
             <div class="col-12 text-center">
-                <button type="submit" class="btn btn-primary">Absenden</button>
+                <button type="submit" class="btn btn-primary" id="submit-button">Absenden</button>
             </div>
             <div id="form-status" class="mt-3"></div>
+            <style>
+                .success-message {
+                    display: none;
+                    padding: 15px;
+                    margin-top: 20px;
+                    border-radius: 5px;
+                    background-color: #d4edda;
+                    color: #155724;
+                    border: 1px solid #c3e6cb;
+                }
+                .error-message {
+                    display: none;
+                    padding: 15px;
+                    margin-top: 20px;
+                    border-radius: 5px;
+                    background-color: #f8d7da;
+                    color: #721c24;
+                    border: 1px solid #f5c6cb;
+                }
+                </style>
         </form>
     </main>
     <footer class="text-white text-center py-3 fixed-bottom">
@@ -85,36 +186,5 @@
         </a>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            
-            // Einfache Validierung
-            const vorname = document.getElementById('vorname').value;
-            const nachname = document.getElementById('nachname').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            
-            if (!vorname || !nachname || !email || !message) {
-                alert('Bitte füllen Sie alle Felder aus.');
-                return false;
-            }
-            
-            // E-Mail-Link erstellen
-            const mailtoLink = `mailto:hallo@alte-feuerwache-laer.de?` +
-                             `subject=Kontakt von ${encodeURIComponent(vorname + ' ' + nachname)}&` +
-                             `body=${encodeURIComponent('Name: ' + vorname + ' ' + nachname + '\n\n' + 
-                                                     'E-Mail: ' + email + '\n\n' + 
-                                                     'Nachricht:\n' + message)}`;
-            
-            // E-Mail-Client öffnen
-            window.open(mailtoLink, '_blank');
-            
-            // Formular zurücksetzen
-            event.target.reset();
-            
-            return false;
-        }
-    </script>
 </body>
 </html>
