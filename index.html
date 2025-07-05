@@ -1,8 +1,28 @@
 <!DOCTYPE html>
-<html lang="de" class="h-100">
+<html lang="de" class="h-100" prefix="og: https://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alte Feuerwache in Laer - Ein Wohnprojekt im Aufbau">
+    <meta name="keywords" content="Wohnprojekt, Laer, Bochum, Alte Feuerwache, Wohnen, Gemeinschaft, Ruhrgebiet, Ruhrpott">
+    <meta name="author" content="Alte Feuerwache Laer">
+    <meta name="robots" content="index, follow">
+    <meta name="geo.region" content="DE-NRW">
+    <meta name="geo.placename" content="Bochum">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alte-feuerwache-laer.de">
+    <meta property="og:title" content="Alte Feuerwache Laer">
+    <meta property="og:description" content="Ein Wohnprojekt im Aufbau">
+    <meta property="og:image" content="https://alte-feuerwache-laer.de/logo.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://alte-feuerwache-laer.de">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
     <title>Alte Feuerwache Laer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
@@ -29,11 +49,33 @@
     </style>
 </head>
 <body class="d-flex flex-column h-100">
-    <header class="text-white py-3 fixed-top w-100">
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Residence",
+      "name": "Alte Feuerwache Laer",
+      "description": "Ein Wohnprojekt im Aufbau",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bochum",
+        "addressRegion": "Nordrhein-Westfalen",
+        "addressCountry": "DE",
+        "postalCode": "44803",
+        "streetAddress": "Alte Wittener Straße 47",
+        "name": "Alte Feuerwache Laer",
+        "email": "hallo@alte-feuerwache-laer.de"
+      },
+      "url": "https://www.alte-feuerwache-laer.de/",
+      "image": "https://www.alte-feuerwache-laer.de/logo.png"
+    }
+    </script>
+    
+    <header class="text-white py-3 fixed-top w-100" role="banner">
         <div class="container-fluid px-4 position-relative">
             <div class="row align-items-center">
                 <div class="col text-center">
-                    <h1 class="m-0"><a href="index.html" class="text-white text-decoration-none">Alte Feuerwache Laer</a></h1>
+                    <h1 class="m-0"><a href="/" class="text-white text-decoration-none">Alte Feuerwache Laer</a></h1>
                 </div>
                 <div class="col-auto position-absolute end-0 pe-4">
                     <a href="contact.html" class="text-white text-decoration-none fw-bold">
@@ -56,7 +98,7 @@
 
     <footer class="footer text-white text-center py-3 fixed-bottom">
         <div class="container">
-            <a href="index.html" class="text-white text-decoration-none fw-bold">
+            <a href="/" class="text-white text-decoration-none fw-bold">
                 <span class="d-none d-sm-inline"><i class="fas fa-home me-1"></i>Startseite</span>
                 <i class="fas fa-home d-inline d-sm-none"></i>
             </a>
