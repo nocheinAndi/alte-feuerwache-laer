@@ -49,7 +49,7 @@
             const message = document.getElementById('message').value;
             
             if (!vorname || !nachname || !email || !message) {
-                alert('Bitte fülle alle Felder aus.');
+                alert('Bitte füllen Sie alle Felder aus.');
                 return false;
             }
             
@@ -82,7 +82,7 @@
                     successMessage.className = 'alert alert-success';
                     successMessage.role = 'alert';
                     successMessage.innerHTML = `
-                        <p>Dankeschön für deine Nachricht! Wir werden uns in Kürze bei dir melden.</p>
+                        <p>Dankeschön für Ihre Nachricht! Wir werden uns in Kürze bei Ihnen melden.</p>
                     `;
                     
                     document.querySelector('main').appendChild(successMessage);
@@ -92,7 +92,7 @@
                     statusDiv.innerHTML = `
                         <div class="alert alert-danger" role="alert">
                             <i class="fas fa-exclamation-triangle me-2"></i>
-                            Es gab ein Problem beim Senden deiner Nachricht. Bitte versuche es später erneut.
+                            Es gab ein Problem beim Senden Ihrer Nachricht. Bitte versuchen Sie es später erneut.
                         </div>
                     `;
                     submitButton.disabled = false;
